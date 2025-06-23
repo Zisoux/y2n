@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y2N - 유튜브 구독목록 노션에 저장</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto pt-96">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Youtube 구독 목록 Notion 저장</h1>
+        
+        <form th:action="@{/youtube/save-subs}" method="get" class="max-w-xl mx-auto p-6 bg-white rounded shadow-md">
+            <div class="mb-4">
+                <label for="accessToken" class="block text-sm font-medium text-gray-700">Youtube Access Token:</label>
+                <input type="text" id="accessToken" name="accessToken" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+            </div>
+
+            <div class="mb-4">
+                <label for="sortBy" class="block text-sm font-medium text-gray-700">정렬 기준:</label>
+                <select id="sortBy" name="sortBy" class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+                    <option value="subscribers">구독자순</option>
+                    <option value="category">카테고리순</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full py-2 px-4 mb-9 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition">Notion에 저장하기</button>
+
+            <a th:href="@{token}" class="text-[#001eff] underline ">내 토큰 확인하기</a>
+        </form>
+
+        <div th:if="${message}" class="mt-6 text-center">
+            <h3 th:text="${message}" class="text-xl text-green-500"></h3>
+        </div>
+    </div>
+
+</body>
+</html>

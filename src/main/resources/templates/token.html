@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Access Token</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+    <div class="container mx-auto pt-96">
+        <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">YouTube Access Token</h2>
+        
+        <!-- Token Display Section -->
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
+            <p class="text-lg font-medium text-gray-700 mb-4">
+                <span class="font-semibold">Access Token:</span> 
+                <span th:text="${accessToken}" class="text-blue-500 whitespace-normal break-words"></span>
+            </p>
+            <p class="text-sm text-gray-600">
+                이 토큰을 YouTube to Notion 폼에 입력하거나, 바로 API 호출에 사용할 수 있습니다.
+            </p>
+        </div>
+        
+        <!-- Instructions Section -->
+        <div class="mt-6 text-center">
+            <p class="text-lg text-gray-700 mb-5">
+                <strong>주의:</strong> 토큰은 중요한 정보이므로 안전하게 보관하세요.
+            </p>
+            <button id="goToForm" class="rounded-md bg-[#4466ff] text-white p-2">Form으로 이동</button>
+        </div>
+
+    </div>
+
+    <script>
+        const goToFormButton = document.getElementById("goToForm");
+
+        goToFormButton.addEventListener("click", function() {
+            window.location.href = "/youtube/form";
+        });
+    </script>
+
+</body>
+</html>
